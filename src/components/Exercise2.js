@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 
 function Exercise2({ facade }) {
   const [joke, setJoke] = useState({ joke: "", ref: "" });
-  const [BCrypto, setBCrypto] = useState({ crypto: "", ref: "" });
+  const [BTC, setBTC] = useState({ crypto: "", ref: "" });
   const [ETHCrypto, setETHCrypto] = useState({ crypto: "", ref: "" });
   const [DOGE, setDOGE] = useState({ crypto: "", ref: "" });
   const [LTC, setLTC] = useState({ crypto: "", ref: "" });
   const [XRP, setXRP] = useState({ crypto: "", ref: "" });
 
   const updates = (data) => {
-    setBCrypto({
+    setBTC({
       crypto: data.ticker.tickers[0].from,
       ref: data.ticker.tickers[0].price,
     });
@@ -38,14 +38,30 @@ function Exercise2({ facade }) {
 
   return (
     <>
-      <h3>
-        "{joke.joke}"<br />
-        "prisen på {BCrypto.crypto} er: {BCrypto.ref}" <br />
-        "prisen på {ETHCrypto.crypto} er: {ETHCrypto.ref}"<br />
-        "prisen på {DOGE.crypto} er: {DOGE.ref}"<br />
-        "prisen på {LTC.crypto} er: {LTC.ref}"<br />
-        "prisen på {XRP.crypto} er: {XRP.ref}"<br />
-      </h3>
+      <h3>{joke.joke}</h3>
+      <br />
+      <ul>
+        <li>
+          Prisen på {BTC.crypto} er: ${BTC.ref}
+        </li>
+        <br />
+        <li>
+          Prisen på {ETHCrypto.crypto} er: {ETHCrypto.ref}
+        </li>
+        <br />
+        <li>
+          Prisen på {DOGE.crypto} er: {DOGE.ref}
+        </li>
+        <br />
+        <li>
+          Prisen på {LTC.crypto} er: {LTC.ref}
+        </li>
+        <br />
+        <li>
+          Prisen på {XRP.crypto} er: {XRP.ref}
+        </li>
+        <br />
+      </ul>
     </>
   );
 }

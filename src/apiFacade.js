@@ -47,11 +47,6 @@ function apiFacade() {
   const getAllCrypto = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/crypto/all", options).then(handleHttpErrors);
-    /*  .then(data => {const allRows = data.map(c => getCryptoTableRow(c))
-    const allRowsAsStrings = allRows.join("")
-      return allRowsAsStrings;
-    });
-    */
   };
 
   const fetchLoggedIn = () => {
