@@ -6,7 +6,7 @@ export default function LoggedIn({ facade }) {
 
   useEffect(() => {
     facade
-      .fetchData()
+      .fetchLoggedIn()
       .then((data) => setDataFromServer(data.msg))
       .catch((err) => {
         if (err.status) {

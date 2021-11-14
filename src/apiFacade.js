@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/ca2";
+const URL = "https://nmart.dk/tomcat/devops-starter";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -13,16 +13,13 @@ function apiFacade() {
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   };
-
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
-
   const loggedIn = () => {
     const loggedIn = getToken() != null;
     return loggedIn;
   };
-
   const logout = () => {
     localStorage.removeItem("jwtToken");
   };
@@ -39,29 +36,34 @@ function apiFacade() {
       });
   };
 
-  const getCrypto = () => {
+  function getCryptoTableRow(c) {
+    return (
+      <tr>
+        <td>${c.from}</td>,<td>${c.price}</td>
+      </tr>
+    );
+  }
+
+  const getAllCrypto = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/crypto/all", options).then(handleHttpErrors);
+    /*  .then(data => {const allRows = data.map(c => getCryptoTableRow(c))
+    const allRowsAsStrings = allRows.join("")
+      return allRowsAsStrings;
+    });
+    */
   };
 
-  const getUserRoles = () => {
-    const token = getToken();
-    if (token != null) {
-      const payloadBase64 = getToken().split(".")[1];
-      const decodedClaims = JSON.parse(window.atob(payloadBase64));
-      const roles = decodedClaims.roles;
-      return roles;
-    } else return "";
+  const fetchLoggedIn = () => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/", options).then(handleHttpErrors);
   };
 
-  const hasUserAccess = (neededRole, loggedIn) => {
-    const roles = getUserRoles().split(",");
-    return loggedIn && roles.includes(neededRole);
-  };
-
-  const fetchData = () => {
+  const fetchData = (endpoint, updateAction) => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
+    return fetch(URL + "/api/" + endpoint, options)
+      .then(handleHttpErrors)
+      .then((data) => updateAction(data));
   };
 
   const makeOptions = (method, addToken, body) => {
@@ -80,7 +82,6 @@ function apiFacade() {
     }
     return opts;
   };
-
   return {
     makeOptions,
     setToken,
@@ -89,9 +90,8 @@ function apiFacade() {
     login,
     logout,
     fetchData,
-    getUserRoles,
-    hasUserAccess,
-    getCrypto,
+    getAllCrypto,
+    fetchLoggedIn,
   };
 }
 const facade = apiFacade();

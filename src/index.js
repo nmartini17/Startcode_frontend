@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "bootstrap/dist/css/bootstrap.css";
+import facade from "./apiFacade";
 import { BrowserRouter as Router } from "react-router-dom";
-import apiFacade from "./Facade/apiFacade";
 
 const AppWithRouter = () => {
   return (
     <Router>
-      <App facade={apiFacade} />
+      <App facade={facade} />
     </Router>
   );
 };
+
 ReactDOM.render(<AppWithRouter />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
