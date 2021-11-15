@@ -1,4 +1,4 @@
-const URL = "https://nmart.dk/tomcat/devops-starter";
+import { URL } from "./components/settings";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -36,19 +36,6 @@ function apiFacade() {
       });
   };
 
-  function getCryptoTableRow(c) {
-    return (
-      <tr>
-        <td>${c.from}</td>,<td>${c.price}</td>
-      </tr>
-    );
-  }
-
-  const getAllCrypto = () => {
-    const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/crypto/all", options).then(handleHttpErrors);
-  };
-
   const fetchLoggedIn = () => {
     const options = makeOptions("GET", true);
     return fetch(URL + "/api/info/", options).then(handleHttpErrors);
@@ -56,7 +43,7 @@ function apiFacade() {
 
   const fetchData = (endpoint, updateAction) => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/" + endpoint, options)
+    return fetch(URL + "/api/" + endpoint, options) //Add the 'api' path, the one before all the endpoints
       .then(handleHttpErrors)
       .then((data) => updateAction(data));
   };
@@ -85,7 +72,6 @@ function apiFacade() {
     login,
     logout,
     fetchData,
-    getAllCrypto,
     fetchLoggedIn,
   };
 }

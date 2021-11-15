@@ -12,7 +12,7 @@ function Exercise3({ facade }) {
 
   return (
     <>
-      <h1>"{joke.joke}"</h1>
+      <h1>{joke.joke}</h1>
     </>
   );
 }

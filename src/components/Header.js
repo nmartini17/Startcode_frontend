@@ -9,18 +9,23 @@ function Header() {
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName="selected" to="/ex1">
+        <NavLink exact activeClassName="selected" to="/crypto">
           Crypto
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName="selected" to="/ex2">
+        <NavLink exact activeClassName="selected" to="/cryptojokes">
           Crypto & Jokes
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName="selected" to="/ex3">
+        <NavLink exact activeClassName="selected" to="/jokes">
           Jokes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink exact activeClassName="selected" to="/yomama">
+          Yomama
         </NavLink>
       </li>
     </div>

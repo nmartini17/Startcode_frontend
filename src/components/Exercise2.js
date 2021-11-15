@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import { FaBitcoin } from "react-icons/fa";
+import { FaEthereum } from "react-icons/fa";
+import { SiDogecoin } from "react-icons/si";
+import { SiLitecoin } from "react-icons/si";
+import { SiRipple } from "react-icons/si";
 
 function Exercise2({ facade }) {
   const [joke, setJoke] = useState({ joke: "", ref: "" });
@@ -29,7 +34,6 @@ function Exercise2({ facade }) {
       crypto: data.ticker.tickers[4].from,
       ref: data.ticker.tickers[4].price,
     });
-
     setJoke({ joke: data.joke.value, ref: data.joke.url });
   };
 
@@ -38,32 +42,63 @@ function Exercise2({ facade }) {
   }, [facade]);
 
   return (
-    <>
-      <h3>{joke.joke}</h3>
-      <br />
-      <ul>
-        <li>
-          Prisen på {BTC.crypto} er: ${BTC.ref}
-        </li>
-        <br />
-        <li>
-          Prisen på {ETH.crypto} er: {ETH.ref}
-        </li>
-        <br />
-        <li>
-          Prisen på {DOGE.crypto} er: {DOGE.ref}
-        </li>
-        <br />
-        <li>
-          Prisen på {LTC.crypto} er: {LTC.ref}
-        </li>
-        <br />
-        <li>
-          Prisen på {XRP.crypto} er: {XRP.ref}
-        </li>
-        <br />
-      </ul>
-    </>
+    <div className="container">
+      <div class="row row-cols-2">
+        <div className="alert alert-primary" role="alert">
+          {joke.joke}
+        </div>
+        <table className="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>
+                {BTC.crypto} <FaBitcoin />
+              </td>
+              <td>${BTC.ref}</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+                {ETH.crypto}
+                <FaEthereum />
+              </td>
+              <td>${ETH.ref}</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>
+                {DOGE.crypto}
+                <SiDogecoin />
+              </td>
+              <td>{DOGE.ref} BTC</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                {LTC.crypto}
+                <SiLitecoin />
+              </td>
+              <td>{LTC.ref} BTC</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>
+                {XRP.crypto}
+                <SiRipple />
+              </td>
+              <td>{XRP.ref} BTC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 

@@ -22,11 +22,11 @@ function Exercise1({ facade }) {
   return (
     <>
       <h3>
-        prisen på {BTC.crypto} er: ${BTC.ref} <br />
-        prisen på {ETH.crypto} er: ${ETH.ref} <br />
-        prisen på {DOGE.crypto} er: {DOGE.ref} BTC <br />
-        prisen på {LTC.crypto} er: {LTC.ref} BTC <br />
-        prisen på {XRP.crypto} er: {XRP.ref} BTC <br />
+        Prisen på {BTC.crypto} er: ${BTC.ref} <br />
+        Prisen på {ETH.crypto} er: ${ETH.ref} <br />
+        Prisen på {DOGE.crypto} er: {DOGE.ref} BTC <br />
+        Prisen på {LTC.crypto} er: {LTC.ref} BTC <br />
+        Prisen på {XRP.crypto} er: {XRP.ref} BTC <br />
       </h3>
     </>
   );
