@@ -40,11 +40,10 @@ export default function App(props) {
               <Exercise1 facade={props.facade} />
             </Route>
             <Route path="/ex2">
-              <Exercise2 facade={props.facade}/>
+              <Exercise2 facade={props.facade} />
             </Route>
             <Route path="/ex3">
               <Exercise3 facade={props.facade} />
-
             </Route>
           </Switch>
         </div>
@@ -76,7 +75,9 @@ function Home() {
         ) : (
           <div>
             <LoggedIn facade={facade} />
-            <button onClick={logout}>Logout</button>
+            <button class="btn btn-danger" onClick={logout}>
+              Logout
+            </button>
           </div>
         )}
       </div>
